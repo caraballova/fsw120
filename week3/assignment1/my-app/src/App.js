@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React from "react"
 import './App.css';
+import data from "./components/data.json"
+import SuperHero from "./components/SuperHero"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      heroes: data
+    }
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick (a) {
+    alert(a)
+  }
+  render(){
+    const heroes = this.state.heroes.map(hero => <SuperHero key={hero.id} handleClick={this.handleClick} catchPhrase={hero.catchPhrase} imageName={hero.imageName} name={hero.name} show={hero.show}/>)
+    return (
+      <div>
+        {heroes}
+      </div>
+    )
+  }
 }
 
 export default App;
