@@ -89,7 +89,7 @@ class FormBadge extends React.Component {
                 <br />
 
                 <input id ="phone1"
-                    type = "text"
+                    type = "number"
                     name = "phone"
                     value = {this.state.phone}
                     placeholder = "phone"
